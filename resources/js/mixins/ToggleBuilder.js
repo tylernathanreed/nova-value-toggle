@@ -20,13 +20,31 @@ export default {
 			return this.newScriptGrammar().compile(this.field.condition);
 		},
 
+		/**
+		 * Creates and returns a new script grammar.
+		 *
+		 * @return {ScriptGrammar}
+		 */
 		newScriptGrammar() {
 
 			let grammar = new ScriptGrammar;
 
-			grammar.setColumnResolver(this.attr);
+			this.initializeScriptGrammar(grammar);
 
 			return grammar;
+
+		},
+
+		/**
+		 * Initializes the specified script grammar.
+		 *
+		 * @param  {ScriptGrammar}  grammar
+		 *
+		 * @return {void}
+		 */
+		initializeScriptGrammar(grammar) {
+
+			//
 
 		}
 

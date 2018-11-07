@@ -1,1 +1,7 @@
-// Nova Tool CSS
+// When the last element is a detail form is value toggled such that
+// it is no longer visible, the second to last child (which is now
+// the last child) still shows a bottom border. Let's fix that.
+
+div[dusk*="detail"] .card > .border-b:last-child:not([class*="remove-bottom-border"]) {
+    border-bottom: none;
+}

@@ -33,6 +33,7 @@ export default {
         Nova.$on(this.attribute + '-value', value => {
             this.value = value;
         });
+
     },
 
     destroyed: function() {
@@ -46,24 +47,49 @@ export default {
          */
         fill(formData) {
 
+            // Only fill the form data if the child is defined
             if(!this.child) {
                 return;
             }
 
+            // Fill the form data through the child
             this.child.field.fill(formData);
+
         },
 
         /**
          * Update the field's internal value.
+         *
+         * @param  {mixed}  value
+         *
+         * @return {void}
          */
         handleChange(value) {
 
+            // Only handle the change if the child is defined
             if(!this.child) {
                 return;
             }
 
+            // Handle the change through the child
             this.child.handleChange(value);
+
+        },
+
+        /**
+         * Initializes the specified script grammar.
+         *
+         * @param  {ScriptGrammar}  grammar
+         *
+         * @return {void}
+         */
+        initializeScriptGrammar(grammar) {
+
+            // Set the column resolver
+            grammar.setColumnResolver(this.attr);
+
         }
+
 
     },
 

@@ -1,0 +1,1 @@
+div[dusk*=detail] .card>.border-b:last-child:not([class*=remove-bottom-border]){border-bottom:none}
