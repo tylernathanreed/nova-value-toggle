@@ -1,9 +1,12 @@
 {
-    "name": "NovaComponents/ValueToggle",
-    "description": "A Laravel Nova field.",
+    "name": "reedware/nova-value-toggle",
+    "description": "A Laravel Nova field used to toggle fields based on the values of other fields.",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "field",
+        "value",
+        "toggle"
     ],
     "license": "MIT",
     "require": {
@@ -11,13 +14,13 @@
     },
     "autoload": {
         "psr-4": {
-            "NovaComponents\\ValueToggle\\": "src/"
+            "Reedware\\NovaValueToggle\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "NovaComponents\\ValueToggle\\FieldServiceProvider"
+                "Reedware\\NovaValueToggle\\FieldServiceProvider"
             ]
         }
     },

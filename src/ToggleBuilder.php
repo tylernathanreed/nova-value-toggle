@@ -1,6 +1,6 @@
 <?php
 
-namespace NovaComponents\ValueToggle;
+namespace Reedware\NovaValueToggle;
 
 use Closure;
 use JsonSerializable;

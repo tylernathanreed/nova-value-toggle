@@ -1,6 +1,6 @@
 <?php
 
-namespace NovaComponents\ValueToggle;
+namespace Reedware\NovaValueToggle;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
@@ -15,9 +15,11 @@ class FieldServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Nova::serving(function (ServingNova $event) {
+        Nova::serving(function(ServingNova $event) {
+
             Nova::script('ValueToggle', __DIR__.'/../dist/js/field.js');
-            Nova::style('ValueToggle', __DIR__.'/../dist/css/field.css');
+            // Nova::style('ValueToggle', __DIR__.'/../dist/css/field.css');
+
         });
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace NovaComponents\ValueToggle;
+namespace Reedware\NovaValueToggle;
 
 use Closure;
 use JsonSerializable;
@@ -26,7 +26,7 @@ class ValueToggle implements JsonSerializable, Resolvable
     /**
      * The condition in which the field appears.
      *
-     * @var \NovaComponents\ValueToggle\ToggleBuilder
+     * @var \Reedware\NovaValueToggle\ToggleBuilder
      */
     public $condition;
 

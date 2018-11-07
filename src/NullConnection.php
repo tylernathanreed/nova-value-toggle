@@ -1,6 +1,6 @@
 <?php
 
-namespace NovaComponents\ValueToggle;
+namespace Reedware\NovaValueToggle;
 
 use Closure;
 use Illuminate\Database\Connection;
@@ -34,7 +34,7 @@ class NullConnection extends Connection
      *
      * @param  string  $table
      *
-     * @return \NovaComponents\ValueToggle\ToggleBuilder
+     * @return \Reedware\NovaValueToggle\ToggleBuilder
      */
     public function table($table)
     {
@@ -44,7 +44,7 @@ class NullConnection extends Connection
     /**
      * Get a new query builder instance.
      *
-     * @return \NovaComponents\ValueToggle\ToggleBuilder
+     * @return \Reedware\NovaValueToggle\ToggleBuilder
      */
     public function query()
     {
