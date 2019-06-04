@@ -4,19 +4,10 @@ namespace Reedware\NovaValueToggle;
 
 use Closure;
 use JsonSerializable;
-use Illuminate\Support\Str;
-use Illuminate\Database\Query\Builder;
 
-class ToggleBuilder extends Builder implements JsonSerializable
+class ToggleBuilder implements JsonSerializable
 {
-    /**
-     * All of the available clause operators.
-     *
-     * @var array
-     */
-    public $operators = [
-        '=', '<', '>', '<=', '>=', '<>', '!='
-    ];
+    use WhereClauses;
 
 	/**
 	 * Creates and returns a new toggle condition instance.
@@ -28,7 +19,7 @@ class ToggleBuilder extends Builder implements JsonSerializable
 	public static function make(Closure $callback)
 	{
 		// Create a new toggle condition
-		$condition = new static(new NullConnection);
+		$condition = new static();
 
 		// Apply the callback on the condition
 		$callback($condition);
