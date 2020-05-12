@@ -169,6 +169,52 @@ export default class ScriptGrammar {
     }
 
     /**
+     * Compiles the specified "where in" clause.
+     *
+     * @param  {object}  $query
+     * @param  {object}  $where
+     *
+     * @return {function}
+     */
+    whereIn(query, where) {
+
+        // Determine the values
+        let values = where.values;
+
+        // Determine the callback for the column value
+        let column = this.column(where.column);
+
+        // Return the evaluating callback
+        return function() {
+            return values.indexOf(column()) >= 0;
+        }
+
+    }
+
+    /**
+     * Compiles the specified "where not in" clause.
+     *
+     * @param  {object}  $query
+     * @param  {object}  $where
+     *
+     * @return {function}
+     */
+    whereNotIn(query, where) {
+
+        // Determine the values
+        let values = where.values;
+
+        // Determine the callback for the column value
+        let column = this.column(where.column);
+
+        // Return the evaluating callback
+        return function() {
+            return values.indexOf(column()) == 0;
+        }
+
+    }
+
+    /**
      * Returns a callback for accessing the specified column.
      *
      * @param  {string}  name
