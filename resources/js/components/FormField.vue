@@ -109,7 +109,11 @@ export default {
 
         attribute() {
             return this.field.field.attribute;
-        }
+        },
+
+        fieldAttribute() {
+            return this.field.field.attribute;
+        },
 
     }
 

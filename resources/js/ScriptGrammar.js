@@ -85,13 +85,21 @@ export default class ScriptGrammar {
      */
 	compileWheresToArray(query) {
 
-		let self = this;
+		return query.wheres.map((where) => {
 
-		return query.wheres.map(function(where) {
+            let callback = this['where' + where.type]
+
+            if(typeof callback === 'undefined') {
+                console.error('Method ScriptGrammar::where' + where.type + '() is not defined.')
+            }
+
+            if(typeof callback !== 'function') {
+                console.error('Method ScriptGrammar::where' + where.type + '() is not a function.')
+            }
 
 			return {
 				'boolean': where.boolean,
-				'callback': self['where' + where.type](query, where)
+				'callback': callback.call(this, query, where)
 			};
 
 		});
@@ -209,7 +217,47 @@ export default class ScriptGrammar {
 
         // Return the evaluating callback
         return function() {
-            return values.indexOf(column()) == 0;
+            return values.indexOf(column()) == -1;
+        }
+
+    }
+
+    /**
+     * Compiles the specified "where null" clause.
+     *
+     * @param  {object}  $query
+     * @param  {object}  $where
+     *
+     * @return {function}
+     */
+    whereNull(query, where) {
+
+        // Determine the callback for the column value
+        let column = this.column(where.column);
+
+        // Return the evaluating callback
+        return function() {
+            return ['', null].indexOf(column()) >= 0;
+        }
+
+    }
+
+    /**
+     * Compiles the specified "where not null" clause.
+     *
+     * @param  {object}  $query
+     * @param  {object}  $where
+     *
+     * @return {function}
+     */
+    whereNotNull(query, where) {
+
+        // Determine the callback for the column value
+        let column = this.column(where.column);
+
+        // Return the evaluating callback
+        return function() {
+            return ['', null].indexOf(column()) == -1;
         }
 
     }
