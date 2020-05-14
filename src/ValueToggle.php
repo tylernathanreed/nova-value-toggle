@@ -17,9 +17,9 @@ class ValueToggle implements JsonSerializable, Resolvable
     public $component = 'value-toggle';
 
     /**
-	 * The field being toggled.
-	 *
-	 * @var \Laravel\Nova\Fields\Field
+     * The field being toggled.
+     *
+     * @var \Laravel\Nova\Fields\Field
      */
     public $field;
 
@@ -111,7 +111,7 @@ class ValueToggle implements JsonSerializable, Resolvable
     }
 
     /**
-     * Handles dynamic atribute mutating to the field instance.
+     * Handles dynamic attribute mutating to the field instance.
      *
      * @param  string  $attribute
      * @param  mixed   $value
@@ -121,5 +121,17 @@ class ValueToggle implements JsonSerializable, Resolvable
     public function __set($attribute, $value)
     {
         $this->field->{$attribute} = $value;
+    }
+
+    /**
+     * Handles dynamic existence checks to the field instance.
+     *
+     * @param  string  $attribute
+     *
+     * @return boolean
+     */
+    public function __isset($attribute)
+    {
+        return isset($this->field->{$attribute});
     }
 }
