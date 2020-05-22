@@ -153,6 +153,11 @@ export default {
          */
         getComponentDescendants(component) {
 
+            // Make sure the component is defined
+            if(!component) {
+                return [];
+            }
+
             // Initialize the list of descendants
             let descendants = [];
 
