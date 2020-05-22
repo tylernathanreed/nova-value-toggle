@@ -134,6 +134,11 @@ export default {
                     return node;
                 }
 
+                // Check for an "action.fields" property
+                if(typeof node.action === 'object' && typeof node.action.fields === 'object') {
+                    return node;
+                }
+
                 // Walk up the chain
                 node = node.$parent;
 
